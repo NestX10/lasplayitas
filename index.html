@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Playitas Resort - Fuerteventura</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="hero">
+        <nav class="nav">
+            <h1 class="logo">Las Playitas Resort</h1>
+            <ul class="nav-links">
+                <li><a href="#about">Información</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#contact">Recibe más información</a></li>
+                <li class="dropdown">
+                    <a href="#">Habitaciones</a>
+                    <div class="dropdown-content">
+                        <a href="Aparthotel.html" target="_blank"><b>Aparthotel</b>
+                        <a href="Villa.html" target="_blank"> <b>Villa</b>
+                        <a href="Hotel.html" target="_blank"> <b>Hotel</b> </a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Redes Sociales</a>
+                    <div class="dropdown-content">
+                        <a href="https://www.facebook.com/PlayitasResort" target="_blank"> <img src="img/b763699fd1fa3bfb374442593ae642e1.png" class="photo-item">
+                        <a href="https://twitter.com/PlayitasResort" target="_blank"> <img src="img/new-twitter-x-logo-twitter-icon-x-social-media-icon-free-png.webp" class="photo-item">
+                        <a href="https://www.instagram.com/playitasresort/?hl=es" target="_blank"> <img src="img/black-and-white-instagram-logo-on-square-with-transparent-background-free-png.webp" class="photo-item"> </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h2>Bienvenido a Las Playitas Resort</h2>
+            <p>Un paraíso para disfrutar del sol, la playa y el deporte en Fuerteventura.</p>
+            <a href="#about" class="btn">Descubre más</a>
+        </div>
+    </header>
+
+    <!-- Información -->
+    <section id="about" class="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Las Playitas Resort es uno de los destinos vacacionales más impresionantes de Fuerteventura, 
+        ofreciendo una variedad de actividades deportivas, playas paradisíacas y experiencias de lujo para toda la familia.</p>
+        <hr class="centered-line">
+        <p>Situado en una preciosa bahía junto a Las Playitas, en el municipio de Tuineje, cuenta con una amplia gama de instalaciones 
+            deportivas donde los huéspedes pueden participar en una gran variedad de actividades. 
+            Tardará 45 minutos desde el aeropuerto en llegar al resort.</p>
+    </section>
+
+    <!-- Contacto (con formulario) -->
+    <section id="contact" class="contact">
+        <h2>Recibe más información</h2>
+        <form id="subscriptionForm">
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+            <input type="email" id="email" name="email" placeholder="Tu correo" required>
+            <button type="submit" class="btn">Suscribirse</button>
+        </form>
+        <button onclick="cancelarSubscripcion()" class="btn cancelar-btn">Cancelar suscripción</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Las Playitas Resort. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Script para el formulario de suscripción -->
+    <script>
+        document.getElementById("subscriptionForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+
+            // **Reemplaza esta URL por la URL de tu Google Apps Script**
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+            
+            try {
+                const response = await fetch(scriptURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name, email, action: "subscribe" })
+                });
+                const result = await response.json();
+                if (result.status === "success") {
+                    alert("Te has suscrito exitosamente.");
+                } else {
+                    alert("Hubo un problema con la suscripción.");
+                }
+            } catch (error) {
+                console.error("Error al enviar la solicitud:", error);
+                alert("Hubo un problema al enviar la solicitud.");
+            }
+        });
+
+        async function cancelarSubscripcion() {
+            const email = document.getElementById("email").value;
+
+            if (!email) {
+                alert("Por favor, ingresa tu correo para cancelar la suscripción.");
+                return;
+            }
+
+            // **Reemplaza esta URL por la URL de tu Google Apps Script**
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+            
+            try {
+                const response = await fetch(scriptURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, action: "unsubscribe" })
+                });
+                const result = await response.json();
+                if (result.status === "success") {
+                    alert("Suscripción cancelada exitosamente.");
+                } else {
+                    alert("Hubo un problema al cancelar la suscripción.");
+                }
+            } catch (error) {
+                console.error("Error al enviar la solicitud:", error);
+                alert("Hubo un problema al enviar la solicitud.");
+            }
+        }
+    </script>
+</body>
+</html>
