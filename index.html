@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es"> <!-- La página está en español -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Las Playitas Resort - Fuerteventura</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Plantilla CSS utilizada -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Fuente utilizada en la web -->
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Encabezado -->
-    <header class="hero">
-        <nav class="nav">
-            <h1 class="logo">Las Playitas Resort</h1>
-            <ul class="nav-links">
+    <header class="hero"> <!-- El encabezado en sí -->
+        <nav class="nav"> <!-- Barra de navegación superior -->
+            <h1 class="logo">Las Playitas Resort</h1> <!-- Logotipo (esquina superior izquierda) -->
+            <ul class="nav-links"> <!-- Enlaces informativos (esquina superior derecha) -->
                 <li><a href="#about">Información</a></li>
                 <li><a href="#gallery">Galería</a></li>
                 <li><a href="#contact">Recibe más información</a></li>
@@ -35,88 +35,91 @@
                 </li>
             </ul>
         </nav>
-        <div class="hero-content">
+        <div class="hero-content"> <!-- Sección restante del encabezado -->
             <h2>Bienvenido a Las Playitas Resort</h2>
             <p>Un paraíso para disfrutar del sol, la playa y el deporte en Fuerteventura.</p>
             <a href="#about" class="btn">Descubre más</a>
         </div>
     </header>
 
+    <!-- Popup Cookies -->
+    <div class="cookie-popup" id="cookiePopup">
+        <p>Utilizamos cookies para asegurar que obtengas la mejor experiencia en nuestro sitio web. 
+        <a href="/politica-cookies" target="_blank">Leer más</a>.</p>
+        <button id="acceptCookiesBtn">Aceptar</button>
+    </div>
+
+    <!-- (Se sale del encabezado) -->
     <!-- Información -->
     <section id="about" class="about">
         <h2>Sobre Nosotros</h2>
         <p>Las Playitas Resort es uno de los destinos vacacionales más impresionantes de Fuerteventura, 
-        ofreciendo una variedad de actividades deportivas, playas paradisíacas y experiencias de lujo para toda la familia.</p>
-        <hr class="centered-line">
-        <p>Situado en una preciosa bahía junto a Las Playitas, en el municipio de Tuineje, cuenta con una amplia gama de instalaciones 
+        ofreciendo una variedad de actividades deportivas, playas paradisíacas y experiencias de lujo para toda la familia.</p> <br> <hr class="centered-line">
+        <br> <p>Situado en una preciosa bahía junto a Las Playitas, en el municipio de Tuineje, cuenta con una amplia gama de instalaciones 
             deportivas donde los huéspedes pueden participar en una gran variedad de actividades. 
             Tardará 45 minutos desde el aeropuerto en llegar al resort.</p>
     </section>
 
-    <!-- Contacto (con formulario) -->
+
+    <!-- Carrousel de imágenes -->
+    <section id="gallery" class="gallery">
+        <span class="separacion"><h2>Galería</h2></span>
+        <div class="carousel-container">
+            <button class="prev-btn">❮</button>
+            <div class="carousel">
+                <img src="img/playitas1.jpg" alt="Vista del resort" class="carousel-item">
+                <img src="img/playitas2.jpg" alt="Piscina del resort" class="carousel-item">
+                <img src="img/Piscinita.jpg" alt="Vista de la piscina olímpica" class="carousel-item">
+                <img src="img/Comidita.jpg" alt="Comidita" class="carousel-item">
+                <img src="img/Tobogan.jpg" alt="Tobogan" class="carousel-item">
+            </div>
+            <button class="next-btn">❯</button>
+        </div>
+    </section>
+
+    <h2 style="text-align: center;">Habitaciones</h2><br>
+
+    <table>
+        <tr>
+            <th><p><strong>Aparthotel</strong></p></th>
+            <th><p><strong>Villa</strong></p></th>
+            <th><p><strong>Hotel</strong></p></th>
+        </tr>
+        <tr>
+            <th><p><a href="Aparthotel.html" target="_blank"> <img src="img/Playitas_Aparthotel_04.jpeg" width="450" height="300"></p></th>
+            <th><p><a href="Villa.html" target="_blank"> <img src="img/P2546_Playitas_Jesper Andersson_Rooms 9_20171106-min.jpg" width="450" height="300"></p></th>
+            <th><p><a href="Hotel.html" target="_blank"> <img src="img/Playitas_Resort.jpg" width="450" height="300"></p></th></a>
+        </tr>
+    </table>
+    <br>
+
+    <!-- Google Maps iframe -->
+    <section class="ubicacion">
+        <br><h2 style="text-align: center;">Ubicación</h2>
+        <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4302.747461385106!2d-13.991917100829223!3d28.232737702493598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc479415045f40ab%3A0x812ae2fba28339da!2sPlayitas%20Resort!5e0!3m2!1ses!2ses!4v1728549691693!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <br></div>
+    </section>
+
+    
+    <!-- Recibe más información (con formulario) -->
     <section id="contact" class="contact">
         <h2>Recibe más información</h2>
         <form id="subscriptionForm">
-            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
-            <input type="email" id="email" name="email" placeholder="Tu correo" required>
-            <button type="submit" class="btn">Suscribirse</button>
+            <input type="text" name="name" placeholder="Tu nombre" required>
+            <input type="email" name="email" placeholder="Tu correo" required>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
+                <button type="submit" class="btn">Suscribirse</button>
+                <button onclick="cancelarSubscripcion()" class="btn cancelar-btn">Cancelar suscripción</button>
+            </div>
         </form>
-        <button onclick="cancelarSubscripcion()" class="btn cancelar-btn">Cancelar suscripción</button>
     </section>
 
+    <!-- Pie de página -->
     <footer>
         <p>&copy; 2024 Las Playitas Resort. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Script para el formulario de suscripción -->
-    <script>
-        document.getElementById("subscriptionForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-
-            // URL directa del Google Apps Script
-            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
-            
-            try {
-                const response = await fetch(scriptURL, {
-                    method: "POST",
-                    mode: "no-cors",  // Configuración para evitar problemas de CORS
-                    body: JSON.stringify({ name, email, action: "subscribe" })
-                });
-                
-                alert("Solicitud enviada. No se pudo obtener una respuesta detallada debido a 'no-cors'.");
-            } catch (error) {
-                console.error("Error al enviar la solicitud:", error);
-                alert("Hubo un problema al enviar la solicitud.");
-            }
-        });
-
-        async function cancelarSubscripcion() {
-            const email = document.getElementById("email").value;
-
-            if (!email) {
-                alert("Por favor, ingresa tu correo para cancelar la suscripción.");
-                return;
-            }
-
-            // URL directa del Google Apps Script
-            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
-            
-            try {
-                const response = await fetch(scriptURL, {
-                    method: "POST",
-                    mode: "no-cors",  // Configuración para evitar problemas de CORS
-                    body: JSON.stringify({ email, action: "unsubscribe" })
-                });
-                
-                alert("Solicitud de cancelación enviada. No se pudo obtener una respuesta detallada debido a 'no-cors'.");
-            } catch (error) {
-                console.error("Error al enviar la solicitud:", error);
-                alert("Hubo un problema al enviar la solicitud.");
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
