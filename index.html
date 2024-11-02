@@ -76,8 +76,8 @@
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
 
-            // **Reemplaza esta URL por la URL de tu Google Apps Script**
-            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+            // Usa cors-anywhere para evitar CORS
+            const scriptURL = "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
             
             try {
                 const response = await fetch(scriptURL, {
@@ -105,8 +105,8 @@
                 return;
             }
 
-            // **Reemplaza esta URL por la URL de tu Google Apps Script**
-            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+            // Usa cors-anywhere para evitar CORS
+            const scriptURL = "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
             
             try {
                 const response = await fetch(scriptURL, {
