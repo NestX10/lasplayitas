@@ -74,7 +74,7 @@ async function cancelarSubscripcion() {
         return;
     }
 
-    const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+    const scriptURL = "";
 
     try {
         const response = await fetch(scriptURL, {
