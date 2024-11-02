@@ -115,41 +115,43 @@ prevBtn3.addEventListener('click', showPrevImage3);
 // Google Apps Script Integration for Subscription Form
 const APP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec';
 
-// Manejador del formulario de suscripción
-document.getElementById('subscriptionForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevenir el envío por defecto del formulario
+// Verificar si el formulario de suscripción existe antes de agregar el evento
+const subscriptionForm = document.getElementById('subscriptionForm');
+if (subscriptionForm) {
+    subscriptionForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir el envío por defecto del formulario
 
-    // Capturar los datos del formulario
-    const name = event.target.name.value;
-    const email = event.target.email.value;
+        // Capturar los datos del formulario
+        const name = event.target.name.value;
+        const email = event.target.email.value;
 
-    // Crear el payload para el envío
-    const payload = {
-        action: "subscribe",
-        name: name,
-        email: email
-    };
+        // Crear el payload para el envío
+        const payload = {
+            action: "subscribe",
+            name: name,
+            email: email
+        };
 
-    // Enviar los datos usando fetch API
-    fetch(APP_SCRIPT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Mostrar mensaje de éxito o error basado en la respuesta
-        alert(data.message);
-    })
-    .catch(error => {
-        console.error('Error al enviar el formulario:', error);
-        alert('Hubo un problema al enviar tu suscripción. Inténtalo nuevamente.');
+        // Enviar los datos usando fetch API
+        fetch(APP_SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Mostrar mensaje de éxito o error basado en la respuesta
+            alert(data.message);
+        })
+        .catch(error => {
+            console.error('Error al enviar el formulario:', error);
+            alert('Hubo un problema al enviar tu suscripción. Inténtalo nuevamente.');
+        });
     });
-});
+}
 
 // Manejador del botón de cancelar suscripción
 function cancelarSubscripcion() {
-    // Capturar el correo del usuario para cancelar la suscripción
     const email = prompt("Introduce tu correo para cancelar la suscripción:");
     if (!email) return;
 
