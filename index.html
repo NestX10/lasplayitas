@@ -76,21 +76,17 @@
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
 
-            // Usa cors-anywhere para evitar CORS
-            const scriptURL = "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+            // URL directa del Google Apps Script
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
             
             try {
                 const response = await fetch(scriptURL, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    mode: "no-cors",  // Configuración para evitar problemas de CORS
                     body: JSON.stringify({ name, email, action: "subscribe" })
                 });
-                const result = await response.json();
-                if (result.status === "success") {
-                    alert("Te has suscrito exitosamente.");
-                } else {
-                    alert("Hubo un problema con la suscripción.");  
-                }
+                
+                alert("Solicitud enviada. No se pudo obtener una respuesta detallada debido a 'no-cors'.");
             } catch (error) {
                 console.error("Error al enviar la solicitud:", error);
                 alert("Hubo un problema al enviar la solicitud.");
@@ -105,21 +101,17 @@
                 return;
             }
 
-            // Usa cors-anywhere para evitar CORS
-            const scriptURL = "https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
+            // URL directa del Google Apps Script
+            const scriptURL = "https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec";
             
             try {
                 const response = await fetch(scriptURL, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    mode: "no-cors",  // Configuración para evitar problemas de CORS
                     body: JSON.stringify({ email, action: "unsubscribe" })
                 });
-                const result = await response.json();
-                if (result.status === "success") {
-                    alert("Suscripción cancelada exitosamente.");
-                } else {
-                    alert("Hubo un problema al cancelar la suscripción.");
-                }
+                
+                alert("Solicitud de cancelación enviada. No se pudo obtener una respuesta detallada debido a 'no-cors'.");
             } catch (error) {
                 console.error("Error al enviar la solicitud:", error);
                 alert("Hubo un problema al enviar la solicitud.");
