@@ -105,15 +105,18 @@
     <!-- Recibe más información (con formulario) -->
     <section id="contact" class="contact">
         <h2>Recibe más información</h2>
-        <form id="subscriptionForm" action="https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec" method="POST" target="_blank">
+        <form id="subscriptionForm" action="https://script.google.com/macros/s/AKfycbyawDS1myfcYWrdxIAbg0r-qLTfFkY790ZNpDaE2u0BNeXprUdvkrLtc1p7E0kKDY7d/exec" method="POST" target="hidden_iframe">
             <input type="text" name="name" placeholder="Tu nombre" required>
             <input type="email" name="email" placeholder="Tu correo" required>
             <div style="display: flex; justify-content: center; gap: 10px; margin-top: 10px;">
                 <button type="submit" class="btn">Suscribirse</button>
                 <button onclick="cancelarSubscripcion()" class="btn cancelar-btn">Cancelar suscripción</button>
             </div>
-        </form>
+        </form>        
     </section>
+    
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
 
     <!-- Pie de página -->
     <footer>
@@ -121,5 +124,12 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        document.getElementById('subscriptionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir la redirección tradicional
+            alert("Suscripción enviada con éxito."); // Mensaje de confirmación
+            event.target.submit(); // Enviar el formulario al iframe oculto
+        });
+    </script>
 </body>
 </html>
